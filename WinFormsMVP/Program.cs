@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsMVP.Model;
+using WinFormsMVP.View;
+using WinFormsMVP.Presenter;
 
 namespace WinFormsMVP
 {
@@ -16,7 +19,10 @@ namespace WinFormsMVP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var repository = new Repository();
+            var view = new Form1();
+            Presenter.Presenter presenter = new Presenter.Presenter(repository,view);
+            Application.Run(view);
         }
     }
 }
